@@ -1,216 +1,266 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="id" data-theme="light" data-palette="sage">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Naylla Yessica Putri · Frontend Developer Enthusiast</title>
-  <meta name="description" content="Portfolio of Naylla Yessica Putri, an IT student at Politeknik Negeri Madiun who loves exploring technology, building things, and learning continuously.">
-  <meta property="og:title" content="Naylla Yessica Putri · Portfolio">
-  <meta property="og:description" content="An IT student who loves exploring technology, building things, and learning continuously.">
+  <meta name="theme-color" content="#f7f6f1">
+  <title>Naylla Yessica Putri — Mahasiswa TI & Web Developer</title>
+  <meta name="description" content="Portofolio Naylla Yessica Putri, mahasiswa Teknologi Informasi yang tertarik pada pengembangan web, teknologi, membaca, dan menulis.">
+  <meta property="og:title" content="Naylla Yessica Putri — Portofolio">
+  <meta property="og:description" content="Mahasiswa Teknologi Informasi yang senang membangun, belajar, membaca, dan menulis.">
   <meta property="og:type" content="website">
-  <!-- Terapkan tema tersimpan sebelum halaman tampil, supaya tidak berkedip -->
   <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    try {
+      var savedTheme = localStorage.getItem('theme');
+      var savedPalette = localStorage.getItem('palette');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+      if (['sage', 'rose', 'lavender', 'sky'].indexOf(savedPalette) !== -1) {
+        document.documentElement.setAttribute('data-palette', savedPalette);
+      }
+    } catch (error) {
+      // Tema awal tetap digunakan jika penyimpanan browser tidak tersedia.
+    }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
 
-  <!-- HEADER & NAVIGATION -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="logo" href="#home" aria-label="Naylla, back to top">N.</a>
-      <nav class="nav" id="nav" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Naylla, ke bagian atas">
+        <span class="logo-mark" aria-hidden="true">N.</span>
+        <span class="logo-name">Naylla Yessica</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Navigasi utama">
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#expertise">Expertise</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#journal">Journal</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#expertise">Keahlian</a></li>
+          <li><a href="#projects">Proyek</a></li>
+          <li><a href="#journal">Tulisan</a></li>
+          <li><a href="#contact">Kontak</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <div class="palette-control">
+          <button class="icon-btn palette-toggle" id="palette-toggle" type="button" aria-label="Pilih warna tampilan" aria-expanded="false" aria-controls="palette-menu" title="Pilih warna tampilan">
+            <span aria-hidden="true">◉</span>
+          </button>
+          <div class="palette-menu" id="palette-menu" hidden>
+            <p class="palette-title" id="palette-title">Warna tampilan</p>
+            <div class="palette-options" role="group" aria-labelledby="palette-title">
+              <button class="palette-option" type="button" data-palette="sage" aria-label="Hijau sage" aria-pressed="true"><span class="palette-swatch swatch-sage" aria-hidden="true"></span><span>Sage</span></button>
+              <button class="palette-option" type="button" data-palette="rose" aria-label="Merah muda" aria-pressed="false"><span class="palette-swatch swatch-rose" aria-hidden="true"></span><span>Rose</span></button>
+              <button class="palette-option" type="button" data-palette="lavender" aria-label="Lavender" aria-pressed="false"><span class="palette-swatch swatch-lavender" aria-hidden="true"></span><span>Lavender</span></button>
+              <button class="palette-option" type="button" data-palette="sky" aria-label="Biru langit" aria-pressed="false"><span class="palette-swatch swatch-sky" aria-hidden="true"></span><span>Sky</span></button>
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Aktifkan tema gelap" title="Ganti tema">
           <span aria-hidden="true" id="theme-icon">☾</span>
         </button>
-        <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
-          <span aria-hidden="true">≡</span>
+        <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
+          <span aria-hidden="true" id="menu-icon">☰</span>
         </button>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
     <section class="section hero" id="home">
       <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="muted">Frontend Developer Enthusiast | Holic Readers</p>
-          <h1>Naylla Yessica Putri</h1>
-          <p class="tagline">An IT student who loves exploring technology, building things, and learning continuously.</p>
-          <p class="lead">Saya mahasiswa D3 Teknologi Informasi yang sedang belajar membangun web, dari tampilan hingga sisi datanya. Di luar layar, saya membaca dan menulis untuk menjaga rasa ingin tahu tetap hidup.</p>
+        <div class="hero-copy">
+          <p class="eyebrow">Halo, saya Naylla · Mahasiswa Teknologi Informasi</p>
+          <h1>Belajar, membangun, dan terus penasaran.</h1>
+          <p class="tagline">Frontend developer enthusiast, pembaca, dan penulis.</p>
+          <p class="lead">Saya senang mengubah rasa ingin tahu menjadi hal yang bisa digunakan—mulai dari halaman web, aplikasi sederhana, hingga catatan dari hal-hal yang saya pelajari.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#projects">Explore My Projects</a>
-            <a class="btn btn-ghost" href="#about">Get to Know Me</a>
+            <a class="btn btn-primary" href="#projects">Lihat proyek <span aria-hidden="true">↘</span></a>
+            <a class="btn btn-ghost" href="#about">Kenali saya</a>
           </div>
         </div>
-        <figure class="hero-photo">
-          <!-- GANTI: hapus div .photo-placeholder, lalu aktifkan baris <img> di bawah -->
-          <div class="photo-placeholder" role="img" aria-label="Profile photo placeholder">N.</div>
-          <!-- <img src="assets/images/profile.jpg" alt="Portrait of Naylla Yessica Putri" width="480" height="600"> -->
-        </figure>
+        <div class="hero-art" role="img" aria-label="Ilustrasi inisial Naylla dengan warna hijau dan bentuk melingkar">
+          <span class="art-orbit" aria-hidden="true"></span>
+          <span class="sparkle" aria-hidden="true">✳</span>
+          <div class="portrait-card" aria-hidden="true">
+            <span class="portrait-initial">N.</span>
+            <span class="portrait-caption">Madiun, Indonesia · selalu belajar</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container split">
-        <h2>About</h2>
+        <div class="section-kicker"><p class="eyebrow">01 / Tentang saya</p></div>
         <div class="prose">
-          <p>Saya Naylla, mahasiswa D3 Teknologi Informasi di Politeknik Negeri Madiun. Ketertarikan saya pada teknologi dimulai dari rasa penasaran: bagaimana sebuah halaman web bisa tampil, bergerak, dan menyimpan data.</p>
-          <p>Saat ini saya fokus pada web development dan mulai mengenal dunia data. Saya senang membangun hal kecil yang berfungsi, lalu memperbaikinya sedikit demi sedikit.</p>
-          <p>Saya juga pembaca dan penulis. Membaca memberi saya sudut pandang baru, sedangkan menulis membantu saya merapikan pikiran. Alam menjadi tempat saya mengambil jeda.</p>
-          <p class="muted">Web Development · Technology · Data · Reading &amp; Writing · Nature</p>
+          <h2>Rasa ingin tahu adalah titik awal.</h2>
+          <p>Saya Naylla, mahasiswa D3 Teknologi Informasi di Politeknik Negeri Madiun. Ketertarikan saya pada teknologi dimulai dari rasa penasaran: bagaimana sebuah halaman web bisa tampil, bergerak, dan menyimpan data?</p>
+          <p>Saat ini saya fokus belajar web development dan mulai mengenal dunia data. Saya suka membangun hal kecil yang berfungsi, lalu memperbaikinya sedikit demi sedikit.</p>
+          <p>Di luar layar, saya membaca dan menulis. Membaca memberi saya sudut pandang baru, sedangkan menulis membantu merapikan pikiran. Alam menjadi tempat saya mengambil jeda.</p>
+          <div class="about-note" aria-label="Hal yang saya minati">
+            <span class="pill">Web development</span>
+            <span class="pill">Teknologi &amp; data</span>
+            <span class="pill">Membaca &amp; menulis</span>
+            <span class="pill">Alam</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- EXPERTISE -->
     <section class="section" id="expertise">
       <div class="container split">
-        <h2>Expertise</h2>
-        <div class="skills">
-          <div class="skill-group">
-            <h3>Development</h3>
-            <ul>
-              <li><span>HTML</span><em>Level: isi sesuai pengalaman</em></li>
-              <li><span>CSS</span><em>Level: isi sesuai pengalaman</em></li>
-              <li><span>PHP</span><em>Intermediate</em></li>
-              <li><span>MySQL</span><em>Intermediate</em></li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h3>Design &amp; Productivity</h3>
-            <ul>
-              <li><span>Figma</span><em>Intermediate</em></li>
-              <li><span>Microsoft Excel</span><em>Beginner</em></li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h3>Creative &amp; Digital</h3>
-            <ul>
-              <li><span>Copywriting</span><em>Advanced</em></li>
-              <li><span>Social Media Management</span><em>Intermediate</em></li>
-            </ul>
+        <div class="section-kicker"><p class="eyebrow">02 / Yang saya pelajari</p></div>
+        <div>
+          <h2>Peralatan di meja belajar.</h2>
+          <div class="skills">
+            <article class="skill-group">
+              <h3>Web &amp; data</h3>
+              <ul>
+                <li>HTML</li><li>CSS</li><li>PHP</li><li>MySQL</li><li>Laravel</li>
+              </ul>
+            </article>
+            <article class="skill-group">
+              <h3>Aplikasi &amp; desain</h3>
+              <ul>
+                <li>Kotlin</li><li>Flutter</li><li>Figma</li>
+              </ul>
+            </article>
+            <article class="skill-group">
+              <h3>Kreatif &amp; produktivitas</h3>
+              <ul>
+                <li>Copywriting</li><li>Manajemen media sosial</li><li>Microsoft Excel</li>
+              </ul>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section class="section" id="projects">
       <div class="container">
-        <h2>Projects</h2>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / Sedang dan pernah saya kerjakan</p>
+            <h2>Proyek pilihan.</h2>
+          </div>
+          <p>Kumpulan latihan dan proyek yang membentuk cara saya belajar. Detail yang belum tersedia akan saya lengkapi seiring waktu.</p>
+        </div>
+        <div class="project-toolbar">
+          <div class="project-filters" role="group" aria-label="Filter kategori proyek">
+            <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Semua</button>
+            <button class="filter-btn" type="button" data-filter="web" aria-pressed="false">Web</button>
+            <button class="filter-btn" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+            <button class="filter-btn" type="button" data-filter="creative" aria-pressed="false">Kreatif</button>
+          </div>
+          <p class="project-count" id="project-count" aria-live="polite">6 proyek</p>
+        </div>
         <ol class="project-list">
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">Bucqet Bunga</div>
+          <li class="project" data-category="mobile">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">B.</span></div>
             <div class="project-body">
+              <p class="meta">Aplikasi Android · Kotlin</p>
               <h3>Bucqet Bunga</h3>
-              <p class="meta">Android Application · Kotlin</p>
-              <p>Aplikasi Android bertema pemesanan atau pengelolaan buket bunga. <span class="todo">(Deskripsi final perlu dikonfirmasi.)</span></p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <p>Aplikasi bertema buket bunga yang saya kembangkan sebagai proyek aplikasi mobile.</p>
+              <span class="project-note">Tautan demo dan detail proyek akan ditambahkan.</span>
             </div>
           </li>
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">SafeLab</div>
+          <li class="project" data-category="web">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">SL.</span></div>
             <div class="project-body">
+              <p class="meta">Aplikasi web · teknologi perlu dilengkapi</p>
               <h3>SafeLab Vision System</h3>
-              <p class="meta">Web Application · Next.js <span class="todo">(perlu diverifikasi)</span></p>
-              <p>Sistem simulasi pemantauan keselamatan laboratorium dengan visualisasi penggunaan alat pelindung diri dan indikator keselamatan.</p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <p>Simulasi pemantauan keselamatan laboratorium dengan visualisasi penggunaan alat pelindung diri dan indikator keselamatan.</p>
+              <span class="project-note">Tautan demo dan detail proyek akan ditambahkan.</span>
             </div>
           </li>
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">POS</div>
+          <li class="project" data-category="web">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">POS</span></div>
             <div class="project-body">
+              <p class="meta">Aplikasi web · Laravel, PHP</p>
               <h3>Mochi Madiun POS</h3>
-              <p class="meta">Web Application · Laravel, PHP</p>
               <p>Sistem Point of Sales untuk mendukung pengelolaan transaksi dan operasional penjualan.</p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <span class="project-note">Tautan demo dan detail proyek akan ditambahkan.</span>
             </div>
           </li>
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">Stock</div>
+          <li class="project" data-category="mobile">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">Stock</span></div>
             <div class="project-body">
+              <p class="meta">Aplikasi mobile · Flutter</p>
               <h3>Mochi Madiun Stock</h3>
-              <p class="meta">Mobile Application · Flutter</p>
-              <p>Aplikasi pengelolaan stok produk.</p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <p>Aplikasi untuk membantu pengelolaan stok produk.</p>
+              <span class="project-note">Tautan demo dan detail proyek akan ditambahkan.</span>
             </div>
           </li>
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">Sound of Write</div>
+          <li class="project" data-category="creative">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">S·W</span></div>
             <div class="project-body">
+              <p class="meta">Blog personal · WordPress</p>
               <h3>Sound of Write</h3>
-              <p class="meta">Personal Blog · WordPress</p>
-              <p>Platform personal untuk publikasi tulisan kreatif dan eksplorasi dunia penulisan.</p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <p>Ruang untuk publikasi tulisan kreatif dan eksplorasi dunia penulisan.</p>
+              <a class="text-link" href="https://journalkisah.blogspot.com/" target="_blank" rel="noopener noreferrer">Kunjungi blog <span aria-hidden="true">↗</span></a>
             </div>
           </li>
-          <li class="project">
-            <div class="project-thumb" aria-hidden="true">Reviewers</div>
+          <li class="project" data-category="web">
+            <div class="project-thumb" aria-hidden="true"><span class="project-symbol">R.</span></div>
             <div class="project-body">
+              <p class="meta">Proyek web · HTML, CSS, PHP</p>
               <h3>Reviewers</h3>
-              <p class="meta">Web Development Project · HTML, CSS, PHP</p>
-              <p class="todo">Deskripsi akan ditambahkan setelah dikonfirmasi.</p>
-              <a class="link" href="#" aria-disabled="true">View Details</a>
+              <p>Proyek pengembangan web yang detail dan tujuan akhirnya masih perlu saya lengkapi.</p>
+              <span class="project-note">Tautan demo dan detail proyek akan ditambahkan.</span>
             </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- JOURNAL -->
     <section class="section" id="journal">
       <div class="container split">
-        <h2>Journal</h2>
+        <div class="section-kicker"><p class="eyebrow">04 / Catatan</p></div>
         <div>
-          <p class="lead">Tempat saya menuangkan hal-hal yang dibaca, dipikirkan, dan ingin diingat. Tulisan lengkapnya ada di blog saya.</p>
-          <article class="featured">
-            <h3>Featured writing</h3>
-            <p class="todo">Tulisan pilihan akan muncul di sini. Tambahkan satu blok &lt;article&gt; baru di index.html untuk setiap tulisan.</p>
+          <h2>Belajar juga berarti berbagi cerita.</h2>
+          <p class="lead">Saya menulis tentang hal-hal yang dibaca, dipikirkan, dan ingin diingat. Kunjungi blog untuk membaca tulisan saya.</p>
+          <article class="journal-card">
+            <span class="journal-icon" aria-hidden="true">✎</span>
+            <div>
+              <h3>Jurnal Kisah</h3>
+              <p>Catatan dan tulisan personal oleh Naylla.</p>
+            </div>
+            <a class="text-link" href="https://journalkisah.blogspot.com/" target="_blank" rel="noopener noreferrer">Baca tulisan <span aria-hidden="true">↗</span></a>
           </article>
-          <a class="btn btn-primary" href="https://journalkisah.blogspot.com/" target="_blank" rel="noopener noreferrer">Read My Journal</a>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container">
-        <h2 class="contact-title">Have a project in mind or just want to say hello?</h2>
-        <a class="btn btn-primary btn-lg" href="https://wa.me/6283839940388?text=Hello%20Naylla!%20I%20found%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" rel="noopener noreferrer">Let's Talk on WhatsApp</a>
-        <ul class="social-list">
-          <li><a href="https://github.com/NayllaYessica" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="#" aria-disabled="true">LinkedIn (URL belum ditambahkan)</a></li>
-          <li><a href="https://www.instagram.com/nayllayessica_" target="_blank" rel="noopener noreferrer">Instagram @nayllayessica_</a></li>
-          <li><a href="https://journalkisah.blogspot.com/" target="_blank" rel="noopener noreferrer">Blog</a></li>
-          <li><a href="#" aria-disabled="true">Medium (URL belum ditambahkan)</a></li>
-        </ul>
+    <section class="contact-section" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">05 / Mari terhubung</p>
+          <h2 class="contact-title">Ada ide atau ingin menyapa?</h2>
+          <p class="contact-copy">Saya terbuka untuk berbincang tentang teknologi, proyek, tulisan, dan kesempatan untuk belajar bersama.</p>
+        </div>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="https://wa.me/6283839940388?text=Halo%20Naylla%2C%20saya%20mengunjungi%20portofoliomu%20dan%20ingin%20terhubung." target="_blank" rel="noopener noreferrer">Hubungi lewat WhatsApp <span aria-hidden="true">↗</span></a>
+          <ul class="social-list">
+            <li><a href="https://github.com/NayllaYessica" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.instagram.com/nayllayessica_/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://journalkisah.blogspot.com/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year">2026</span> Naylla Yessica Putri</p>
-      <p class="muted">Designed &amp; built with curiosity.</p>
-      <a href="#top">Back to top</a>
+      <p>© <span id="year"></span> Naylla Yessica Putri</p>
+      <p class="muted">Dibuat dengan rasa ingin tahu.</p>
+      <a href="#top">Kembali ke atas ↑</a>
     </div>
   </footer>
 
