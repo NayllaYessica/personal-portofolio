@@ -85,6 +85,18 @@ nav.addEventListener('click', (event) => {
   if (event.target.closest('a')) closeMenu();
 });
 
+const logo = document.querySelector('.logo');
+const logoMark = document.querySelector('.logo-mark');
+let greetingTimeout;
+
+logo.addEventListener('click', () => {
+  logoMark.classList.add('is-greeting');
+  window.clearTimeout(greetingTimeout);
+  greetingTimeout = window.setTimeout(() => {
+    logoMark.classList.remove('is-greeting');
+  }, 1600);
+});
+
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !paletteMenu.hidden) {
     closePaletteMenu();
